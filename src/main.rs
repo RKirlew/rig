@@ -11,5 +11,14 @@ async fn main() -> io::Result<()> {
     packet.extend_from_slice(&0x1234u16.to_be_bytes());
     //Flags will use the one for standard query
     packet.extend_from_slice(&0x0100u16.to_be_bytes());
+    //QDCount
+    packet.extend_from_slice(&1u16.to_be_bytes());
+    //ANCount
+    packet.extend_from_slice(&0u16.to_be_bytes());
+    //NSCount
+    packet.extend_from_slice(&0u16.to_be_bytes());
+    //ARCount
+    packet.extend_from_slice(&0u16.to_be_bytes());
+
     Ok(())
 }
