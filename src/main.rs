@@ -4,6 +4,7 @@ use tokio::net::UdpSocket;
 #[tokio::main]
 async fn main() -> io::Result<()> {
     let mut packet: Vec<u8> = Vec::new();
+    let mut buf = [0u8; 512];
     let sock = UdpSocket::bind("0.0.0.0:8080").await?;
     sock.connect("8.8.8.8").await?;
     //Header creation
@@ -19,6 +20,6 @@ async fn main() -> io::Result<()> {
     packet.extend_from_slice(&0u16.to_be_bytes());
     //ARCount
     packet.extend_from_slice(&0u16.to_be_bytes());
-
+    //Start pushing the question
     Ok(())
 }
